@@ -1,3 +1,7 @@
 # trabalho_chapeuzinho
 
-A new Flutter project.
+Trabalho sobre o filme Deu a Louca na Chapeuzinho
+
+Produzido por:
+Guilherme Diogo de Moraes
+Kevin Cavalcante Silva
