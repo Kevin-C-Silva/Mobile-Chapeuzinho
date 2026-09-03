@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:trabalho_chapeuzinho/filme.dart';
+import 'package:trabalho_chapeuzinho/curiosidades.dart';
 
 void main() {
   runApp(const MainApp());
@@ -23,9 +24,10 @@ class PagInicial extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.lightGreen.shade100,
+        backgroundColor: Color(0xFF1A1A1A),
         appBar: AppBar(
-          title: const Text("Sobre Deu a Louca na Chapeuzinho"),
+          leading: Icon(Icons.movie),
+          title: const Text("Sobre Deu a Louca na Chapeuzinho", style: TextStyle(color: Colors.white)),
           backgroundColor: Colors.red.shade700,
         ),
         body: Center(
@@ -47,11 +49,17 @@ class PagInicial extends StatelessWidget {
                     },
                     child: Text("Sobre o filme"),
                   ),
-
                   FloatingActionButton(
                     backgroundColor: Colors.blueGrey,
-                    onPressed: null,
-                    child: Text("Personagens"),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const Curiosidades(),
+                          ),
+                      );
+                    },
+                    child: Text("Curiosidades"),
                   ),
                 ],
               ),
