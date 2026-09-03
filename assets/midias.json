@@ -1,0 +1,131 @@
+[
+    {
+        "imagens": [
+            {
+                "url": "assets/filme.jpg",
+                "legenda": "",
+                "origem": "https://www.imdb.com/pt/title/tt0443536/"
+            },
+            {
+                "url": "assets/chapeuzinho.webp",
+                "legenda": "Chapeuzinho Vermelho Puckett - Mabel Cezar/Roberta Di Angellis",
+                "origem": "https://dublagem.fandom.com/wiki/Deu_a_Louca_na_Chapeuzinho"
+            },
+            {
+                "url": "assets/vovo.webp",
+                "legenda": "Vovó Puckett - Geisa Vidal",
+                "origem": "https://dublagem.fandom.com/wiki/Deu_a_Louca_na_Chapeuzinho"
+            },
+            {
+                "url": "assets/lobo.webp",
+                "legenda": "Lobo - Mauro Ramos",
+                "origem": "https://dublagem.fandom.com/wiki/Deu_a_Louca_na_Chapeuzinho"
+            },
+            {
+                "url": "assets/ligeirinho.webp",
+                "legenda": "Ligeirinho - Marco Antônio Costa",
+                "origem": "https://dublagem.fandom.com/wiki/Deu_a_Louca_na_Chapeuzinho"
+            },
+            {
+                "url": "assets/franz.webp",
+                "legenda": "Franz, o Lenhador - Guilherme Briggs",
+                "origem": "https://dublagem.fandom.com/wiki/Deu_a_Louca_na_Chapeuzinho"
+            },
+            {
+                "url": "assets/nicky.webp",
+                "legenda": "Inspetor Nick Pirueta - Hamilton Ricardo",
+                "origem": "https://dublagem.fandom.com/wiki/Deu_a_Louca_na_Chapeuzinho"
+            },
+            {
+                "url": "assets/boingo.webp",
+                "legenda": "Boingo, o Coelho - Claudio Galvan",
+                "origem": "https://dublagem.fandom.com/wiki/Deu_a_Louca_na_Chapeuzinho"
+            },
+            {
+                "url": "assets/chefe.webp",
+                "legenda": "Chefe Urso - Luiz Carlos Persy",
+                "origem": "https://dublagem.fandom.com/wiki/Deu_a_Louca_na_Chapeuzinho"
+            },
+            {
+                "url": "assets/bill.webp",
+                "legenda": "Detetive Bill Cegonha - Sérgio Stern",
+                "origem": "https://dublagem.fandom.com/wiki/Deu_a_Louca_na_Chapeuzinho"
+            },
+            {
+                "url": "assets/tommy.webp",
+                "legenda": "Tommy, o porco - Jorge Vasconcellos",
+                "origem": "https://dublagem.fandom.com/wiki/Deu_a_Louca_na_Chapeuzinho"
+            },
+            {
+                "url": "assets/timmy.webp",
+                "legenda": "Timmy - Jorge Vasconcellos",
+                "origem": "https://dublagem.fandom.com/wiki/Deu_a_Louca_na_Chapeuzinho"
+            },
+            {
+                "url": "assets/glen.webp",
+                "legenda": "Glen - Pedro EugênioJerry, o guaxinim - Paulo Vignolo",
+                "origem": "https://dublagem.fandom.com/wiki/Deu_a_Louca_na_Chapeuzinho"
+            },
+            {
+                "url": "assets/japeth.webp",
+                "legenda": "Japeth, o Bode - Márcio Simões",
+                "origem": "https://dublagem.fandom.com/wiki/Deu_a_Louca_na_Chapeuzinho"
+            },
+            {
+                "url": "assets/jimmy.webp",
+                "legenda": "Jimmy Lizard, diretor do comercial - Alexandre Moreno",
+                "origem": "https://dublagem.fandom.com/wiki/Deu_a_Louca_na_Chapeuzinho"
+            },
+            {
+                "url": "assets/dolphi.webp",
+                "legenda": "Dolphi - Maurício Berger",
+                "origem": "https://dublagem.fandom.com/wiki/Deu_a_Louca_na_Chapeuzinho"
+            },
+            {
+                "url": "assets/p-biggie.webp",
+                "legenda": "P-Biggie, o urso polar - Eduardo Borgerth",
+                "origem": "https://dublagem.fandom.com/wiki/Deu_a_Louca_na_Chapeuzinho"
+            },
+            {
+                "url": "assets/zorra.webp",
+                "legenda": "Zorra, a Raposa - Pedro Eugênio",
+                "origem": "https://dublagem.fandom.com/wiki/Deu_a_Louca_na_Chapeuzinho"
+            },
+            {
+                "url": "assets/reporter.webp",
+                "legenda": "Repórter Gambá - Juraciara Diácovo",
+                "origem": "https://dublagem.fandom.com/wiki/Deu_a_Louca_na_Chapeuzinho"
+            },
+            {
+                "url": "assets/alan.webp",
+                "legenda": "Alan Delã, a Ovelha - Júlio Chaves",
+                "origem": "https://dublagem.fandom.com/wiki/Deu_a_Louca_na_Chapeuzinho"
+            },
+            {
+                "url": "assets/quill.webp",
+                "legenda": "Quill, o pica-pau - Matheus Périssé",
+                "origem": "https://dublagem.fandom.com/wiki/Deu_a_Louca_na_Chapeuzinho"
+            },
+            {
+                "url": "assets/sanduiche.webp",
+                "legenda": "Homem Sanduíche - Eduardo Borgerth",
+                "origem": "https://dublagem.fandom.com/wiki/Deu_a_Louca_na_Chapeuzinho"
+            },
+            {
+                "url": "assets/schnitzel.webp",
+                "legenda": "Garoto e Garota Schnitzel - Yan Gesteira e Bianca Salgueiro, respectivamente",
+                "origem": "https://dublagem.fandom.com/wiki/Deu_a_Louca_na_Chapeuzinho"
+            },
+            {
+                "url": "assets/pescador.webp",
+                "legenda": "O Pescador - Pietro Mário",
+                "origem": "https://dublagem.fandom.com/wiki/Deu_a_Louca_na_Chapeuzinho"
+            },
+            {
+                "url": "assets/rap.webp",
+                "legenda": "Urso Rap - Malta Júnior / Marcelo Matos (?)",
+                "origem": "https://dublagem.fandom.com/wiki/Deu_a_Louca_na_Chapeuzinho"
+            }
+        ]
+    }
+]
