@@ -54,9 +54,10 @@ class _CuriosidadesState extends State<Curiosidades> {
           children: [
             SizedBox(height: 30),
             Text(
-              'Ficha técnica',
-              style: TextStyle(color: Colors.white, fontSize: 30),
+              'Curiosidades',
+              style: TextStyle(color: Colors.white, fontSize: 30, fontWeight: FontWeight.w500),
             ),
+            SizedBox(height: 30),
             Row(
               children: [
                 Expanded(
