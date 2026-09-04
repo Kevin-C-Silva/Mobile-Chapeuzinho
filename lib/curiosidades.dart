@@ -103,7 +103,7 @@ class _CuriosidadesState extends State<Curiosidades> {
                 ),
               ),
               child: Secao(
-                urls: [imagens[0]['url']],
+                endereco: [imagens[0]['url']],
                 texto: txtConteudo['texto'],
                 tamanho: 300,
               ),

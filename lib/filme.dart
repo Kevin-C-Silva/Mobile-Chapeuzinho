@@ -33,12 +33,10 @@ class _FilmeState extends State<Filme> {
 
   @override
   Widget build(BuildContext context) {
-        if (conteudo.isEmpty || imagens.isEmpty) {
+    if (conteudo.isEmpty || imagens.isEmpty) {
       return const Scaffold(
         backgroundColor: Color(0xFF1A1A1A),
-        body: Center(
-          child: CircularProgressIndicator(color: Colors.red),
-        ),
+        body: Center(child: CircularProgressIndicator(color: Colors.red)),
       );
     }
 
@@ -97,7 +95,7 @@ class _FilmeState extends State<Filme> {
                 border: Border.all(color: Colors.red.shade700, width: 2),
               ),
               child: Secao(
-                urls: [imagens[0]['url']],
+                endereco: [imagens[0]['url']],
                 texto: txtConteudo['texto'],
                 tamanho: 300,
               ),
@@ -135,18 +133,21 @@ class _FilmeState extends State<Filme> {
             // Geração dinâmica de cada imagem no JSON
             if (imagens.isNotEmpty)
               ...imagens.skip(1).map((personagem) {
-                return Container(
-                  margin: EdgeInsets.only(bottom: 15),
-                  padding: EdgeInsets.all(8),
-                  decoration: BoxDecoration(
-                    color: Color(0xFF292929),
-                    borderRadius: BorderRadius.circular(15),
-                    border: Border.all(color: Colors.grey.shade700),
-                  ),
-                  child: Secao(
-                    urls: [personagem['url']],
-                    texto: personagem['legenda'],
-                    tamanho: 100,
+                return Center(
+                  child: Container(
+                    width: 1000,
+                    margin: EdgeInsets.only(bottom: 15),
+                    padding: EdgeInsets.all(8),
+                    decoration: BoxDecoration(
+                      color: Color(0xFF292929),
+                      borderRadius: BorderRadius.circular(15),
+                      border: Border.all(color: Colors.grey.shade700),
+                    ),
+                    child: Secao(
+                      endereco: [personagem['url']],
+                      texto: personagem['legenda'],
+                      tamanho: 100,
+                    ),
                   ),
                 );
               }),
