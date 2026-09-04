@@ -8,5 +8,5 @@ Este projeto consiste no desenvolvimento de um aplicativo utilizando o *framewor
 
 Este repositório possui uma wiki que contém duas páginas:
 
-[**Home**](https://github.com/Kevin-C-Silva/Mobile-Chapeuzinho/wiki), que serve como página inicial e explica para o leitor sobre o filme. <br>
-[**Protótipo**](https://github.com/Kevin-C-Silva/Mobile-Chapeuzinho/wiki/Prot%C3%B3tipo), que serve para explicar *cada* elemento utlilizado na aplicação.
+* [**Home**](https://github.com/Kevin-C-Silva/Mobile-Chapeuzinho/wiki), que serve como página inicial e explica para o leitor sobre o filme. <br>
+* [**Protótipo**](https://github.com/Kevin-C-Silva/Mobile-Chapeuzinho/wiki/Prot%C3%B3tipo), que serve para explicar *cada* elemento utlilizado na aplicação.
