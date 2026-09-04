@@ -16,7 +16,7 @@ class Secao extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        // Imagen(s)
+        // Imagem(ns)
         Expanded(
           flex: 1,
           child: Row(
