@@ -55,138 +55,96 @@ class _CuriosidadesState extends State<Curiosidades> {
 
       appBar: AppBar(
         title: Text(
-          titulos[0],
+          titulos[0] as String,
           style: const TextStyle(
             color: Colors.white,
             fontWeight: FontWeight.bold,
           ),
         ),
-        backgroundColor: Colors.red.shade800,
+        backgroundColor: Colors.red,
       ),
 
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            const SizedBox(height: 15),
-
-            // Título "Curiosidades"
-            Text(
-              titulos[7],
-              style: const TextStyle(
-                color: Colors.white,
-                fontSize: 30,
-                fontWeight: FontWeight.bold,
-              ),
-              textAlign: TextAlign.center,
-            ),
-
-            const SizedBox(height: 10),
-
-            Container(
-              height: 4,
-              width: 70,
-              decoration: BoxDecoration(
-                color: Colors.red,
-                borderRadius: BorderRadius.circular(10),
-              ),
-            ),
-
-            const SizedBox(height: 25),
-
-            // Imagem do filme
-            Container(
-              width: double.infinity,
-              padding: const EdgeInsets.all(12),
-              decoration: BoxDecoration(
-                color: const Color(0xFF292929),
-                borderRadius: BorderRadius.circular(15),
-                border: Border.all(
-                  color: Colors.red,
-                  width: 2,
-                ),
-              ),
-              child: Secao(
-                endereco: [
-                  imagens[0]['misc'][0]['caminho'] as String
-                ],
-                texto: '',
-                tamanho: 300,
-              ),
-            ),
-
-            const SizedBox(height: 35),
-
-            // Curiosidades
             ...curiosidades.asMap().entries.map((entrada) {
               final int indice = entrada.key;
-              final Map<String, dynamic> curiosidade = entrada.value;
 
-              // Pega o título correspondente à curiosidade
+              final Map<String, dynamic> curiosidade =
+                  entrada.value as Map<String, dynamic>;
+
+              // Obtém o título correspondente
+              final int indiceTitulo =
+                  indiceTituloCuriosidade + indice;
+
+              if (indiceTitulo >= titulos.length) {
+                return const SizedBox.shrink();
+              }
+
               final String tituloCuriosidade =
-                  titulos[indiceTituloCuriosidade + indice] as String;
+                  titulos[indiceTitulo] as String;
 
-              return Container(
-                width: double.infinity,
-                margin: const EdgeInsets.only(bottom: 25),
-                padding: const EdgeInsets.all(12),
-                decoration: BoxDecoration(
-                  color: const Color(0xFF292929),
-                  borderRadius: BorderRadius.circular(15),
-                  border: Border.all(
-                    color: Colors.grey.shade700,
+              return Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  // TÍTULO FORA DO CONTAINER
+                  Text(
+                    tituloCuriosidade,
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontSize: 30,
+                      fontWeight: FontWeight.bold,
+                    ),
+                    textAlign: TextAlign.center,
                   ),
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    // Título da curiosidade
-                    Text(
-                      tituloCuriosidade,
-                      style: const TextStyle(
+
+                  const SizedBox(height: 10),
+
+                  // Linha vermelha
+                  Center(
+                    child: Container(
+                      height: 4,
+                      width: 70,
+                      decoration: BoxDecoration(
                         color: Colors.red,
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold,
+                        borderRadius: BorderRadius.circular(10),
                       ),
                     ),
+                  ),
 
-                    const SizedBox(height: 15),
+                  const SizedBox(height: 25),
 
-                    // Imagem
-                    Secao(
-                      endereco: [
-                        curiosidade['caminho'] as String
+                  Container(
+                    width: double.infinity,
+                    margin: const EdgeInsets.only(bottom: 35),
+                    padding: const EdgeInsets.all(12),
+                    decoration: BoxDecoration(
+                      color: const Color(0xFF292929),
+                      borderRadius: BorderRadius.circular(15),
+                      border: Border.all(
+                        color: Colors.grey.shade700,
+                      ),
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        // Imagem + texto
+                        Secao(
+                          endereco: [
+                            curiosidade['caminho'] as String,
+                          ],
+                          texto: curiosidade['legenda'] as String,
+                          tamanho: 200,
+                        ),
                       ],
-                      texto: '',
-                      tamanho: 200,
                     ),
-
-                    const SizedBox(height: 15),
-
-                    // Texto
-                    Text(
-                      curiosidade['legenda'] as String,
-                      style: const TextStyle(
-                        color: Colors.white,
-                        fontSize: 16,
-                        height: 1.5,
-                      ),
-                    ),
-
-                    const SizedBox(height: 10),
-
-                    // Fonte
-                    Text(
-                      'Fonte: ${curiosidade['origem']}',
-                      style: TextStyle(
-                        color: Colors.grey.shade400,
-                        fontSize: 12,
-                      ),
-                    ),
-                  ],
-                ),
+                  ),
+                ],
               );
             }),
+
             const SizedBox(height: 10),
           ],
         ),

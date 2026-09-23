@@ -101,7 +101,48 @@ class _FilmeState extends State<Filme> {
               ),
             ),
 
-            SizedBox(height: 35),
+            const SizedBox(height: 25),
+
+            Center(
+              child: Text(
+                titulos[3],
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 30,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+
+            SizedBox(height: 10),
+
+            Center(
+              child: Container(
+                height: 4,
+                width: 80,
+                decoration: BoxDecoration(
+                  color: Colors.red,
+                  borderRadius: BorderRadius.circular(10),
+                ),
+              ),
+            ),
+
+            const SizedBox(height: 25),
+
+            Container(
+              width: double.infinity,
+              padding: EdgeInsets.all(12),
+              decoration: BoxDecoration(
+                color: Color(0xFF292929),
+                borderRadius: BorderRadius.circular(15),
+                border: Border.all(color: Colors.red.shade700, width: 2),
+              ),
+              child: Secao(
+                endereco: [imagens[0]['curiosidades'][3]['caminho']],
+                texto: legendas[1],
+                tamanho: 300,
+              ),
+            ),
           ],
         ),
       ),
