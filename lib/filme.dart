@@ -12,6 +12,8 @@ class Filme extends StatefulWidget {
 
 class _FilmeState extends State<Filme> {
   List<dynamic> imagens = [];
+  List<dynamic> titulos = [];
+  List<dynamic> legendas = [];
 
   @override
   void initState() {
@@ -20,35 +22,46 @@ class _FilmeState extends State<Filme> {
   }
 
   Future<void> readJson() async {
-    final String response =
-        await rootBundle.loadString('assets/midias.json');
+    final String response = await rootBundle.loadString('assets/midias.json');
 
     final List<dynamic> data = json.decode(response);
 
     setState(() {
       imagens = data[0]['imagens'];
+      titulos = data[0]['conteudo'][0]['titulos'];
+      legendas = data[0]['conteudo'][0]['textos'];
     });
   }
 
   @override
   Widget build(BuildContext context) {
+    if (titulos.isEmpty || legendas.isEmpty || imagens.isEmpty) {
+      return const Scaffold(
+        backgroundColor: Color(0xFF1A1A1A),
+        body: Center(child: CircularProgressIndicator(color: Colors.red)),
+      );
+    }
+
     return Scaffold(
-      backgroundColor: const Color(0xFF1A1A1A),
+      backgroundColor: Color(0xFF1A1A1A),
+
       appBar: AppBar(
-        title: const Text(
-          "Sobre Deu a Louca na Chapeuzinho",
-          style: TextStyle(color: Colors.white),
+        title: Text(
+          titulos[0],
+          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
         ),
-        backgroundColor: Colors.red,
+        backgroundColor: Colors.red.shade800,
       ),
+
       body: SingleChildScrollView(
-        padding: const EdgeInsets.all(16),
+        padding: EdgeInsets.all(16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Center(
+            // Título da página
+            Center(
               child: Text(
-                'Ficha técnica',
+                titulos[1],
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 30,
@@ -57,54 +70,38 @@ class _FilmeState extends State<Filme> {
               ),
             ),
 
-            const SizedBox(height: 20),
-            
-            Secao(
-              urls: imagens.isNotEmpty
-                  ? [imagens[0]['url']]
-                  : [],
-              texto: '''
-Título: Hoodwinked! (Original)
-Ano de produção: 2005
-Dirigido por: Cory Edwards
-Estreia: 16 de Dezembro de 2005
-Duração: 80 minutos
-Classificação: Livre para todos os públicos
-Gênero(s): Animação, Comédia, Família
-Países de Origem: Estados Unidos da América''',
-              tamanho: 300,
-            ),
+            SizedBox(height: 10),
 
-            const SizedBox(height: 30),
-
-            const Center(
-              child: Text(
-                'Elenco',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
+            Center(
+              child: Container(
+                height: 4,
+                width: 80,
+                decoration: BoxDecoration(
+                  color: Colors.red,
+                  borderRadius: BorderRadius.circular(10),
                 ),
               ),
             ),
 
-            const SizedBox(height: 15),
+            const SizedBox(height: 25),
 
-            // Geração dinâmica de cada imagem no Json
-            if (imagens.isNotEmpty) ...[
-              ...imagens.skip(1).map((personagem) {
-                return Padding(
-                  padding: const EdgeInsets.only(bottom: 15.0),
-                  child: Secao(
-                    urls: [personagem['url']],
-                    texto: personagem['legenda'],
-                    tamanho: 100,
-                  ),
-                );
-              }),
-            ],
+            // Ficha técnica
+            Container(
+              width: double.infinity,
+              padding: EdgeInsets.all(12),
+              decoration: BoxDecoration(
+                color: Color(0xFF292929),
+                borderRadius: BorderRadius.circular(15),
+                border: Border.all(color: Colors.red.shade700, width: 2),
+              ),
+              child: Secao(
+                endereco: [imagens[0]['misc'][0]['url']],
+                texto: legendas[0],
+                tamanho: 300,
+              ),
+            ),
 
-            const SizedBox(height: 30),
+            SizedBox(height: 35),
           ],
         ),
       ),

@@ -11,79 +11,104 @@ class Curiosidades extends StatefulWidget {
 }
 
 class _CuriosidadesState extends State<Curiosidades> {
-  // Lista que irá armazenar as imagens do JSON
+  // Listas que irão armazenar os dados do JSON
   List<dynamic> imagens = [];
+  List<dynamic> titulos = [];
+  List<dynamic> legendas = [];
+
 
   @override
   void initState() {
     super.initState();
-
-    // Carrega as imagens assim que a página é iniciada
+    // Carrega os dados assim que a página é iniciada
     readJson();
   }
 
-  // Método responsável por ler o arquivo JSON
+  // Método responsável por ler o arquivo JSON unificado
   Future<void> readJson() async {
-    // Lê o arquivo JSON
-    final String response = await rootBundle.loadString('assets/midias.json');
+    final String response =
+        await rootBundle.loadString('assets/midias.json');
 
-    // Converte o JSON de String para uma lista
     final List<dynamic> data = json.decode(response);
 
-    // Pega a imagem presente no JSON
     setState(() {
       imagens = data[0]['imagens'];
+      titulos = data[0]['conteudo'][0]['titulos'];
+      legendas = data[0]['conteudo'][0]['textos'];
     });
   }
 
   @override
   Widget build(BuildContext context) {
+    // Exibe um indicador de progresso enquanto os dados não carregam
+    if (titulos.isEmpty || imagens.isEmpty) {
+      return const Scaffold(
+        backgroundColor: Color(0xFF1A1A1A),
+        body: Center(
+          child: CircularProgressIndicator(color: Colors.red),
+        ),
+      );
+    }
+
     return Scaffold(
       backgroundColor: const Color(0xFF1A1A1A),
-
       appBar: AppBar(
-        title: const Text(
-          "Sobre Deu a Louca na Chapeuzinho",
-          style: TextStyle(color: Colors.white),
+        title: Text(
+          titulos[0],
+          style: TextStyle(
+            color: Colors.white,
+            fontWeight: FontWeight.bold,
+          ),
         ),
-        backgroundColor: Colors.red.shade700,
+        backgroundColor: Colors.red.shade800,
       ),
-
-      body: Center(
+      body: SingleChildScrollView(
+        padding: const EdgeInsets.all(16),
         child: Column(
           children: [
-            SizedBox(height: 30),
+            const SizedBox(height: 15),
+
             Text(
-              'Curiosidades',
-              style: TextStyle(color: Colors.white, fontSize: 30, fontWeight: FontWeight.w500),
+              titulos[4],
+              style: const TextStyle(
+                color: Colors.white,
+                fontSize: 30,
+                fontWeight: FontWeight.bold,
+              ),
             ),
-            SizedBox(height: 30),
-            Row(
-              children: [
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      // Primeira seção
-                      Secao(
-                        urls: imagens.isNotEmpty ? [imagens[0]['url']] : [],
-                        texto: '''
-Orçamento independente: O filme foi produzido de forma independente com recursos limitados comparado aos gigantes da época, como Pixar e DreamWorks.
 
-Personagem salvo por crianças: O personagem Japeth seria cortado da versão final, mas testes com o público infantil mostraram que as crianças adoravam o personagem, garantindo sua permanência no filme.
+            const SizedBox(height: 10),
 
-Inspiração: A estrutura narrativa de 'Deu a Louca na Chapeuzinho' é inspirado no filme Rashomon (1950), onde o mesmo evento é contado sob a perspectiva de diferentes personagens.
+            Container(
+              height: 4,
+              width: 70,
+              decoration: BoxDecoration(
+                color: Colors.red,
+                borderRadius: BorderRadius.circular(10),
+              ),
+            ),
 
-Título brasileiro: A inclusão de "Deu a Louca" no título brasileiro seguiu uma forte estratégia de marketing dos anos 2000 para associar comédias estrangeiras ao estilo de paródia pastelão.
-''',
-                        tamanho: 300,
-                      ),
-                    ],
-                  ),
+            const SizedBox(height: 25),
+
+            // Cartão das curiosidades
+            Container(
+              width: double.infinity,
+              padding: const EdgeInsets.all(12),
+              decoration: BoxDecoration(
+                color: const Color(0xFF292929),
+                borderRadius: BorderRadius.circular(15),
+                border: Border.all(
+                  color: Colors.red.shade700,
+                  width: 2,
                 ),
-              ],
+              ),
+              child: Secao(
+                endereco: [imagens[0]['misc'][0]['url']],
+                texto: legendas[1],
+                tamanho: 300,
+              ),
             ),
+            const SizedBox(height: 25),
           ],
         ),
       ),
