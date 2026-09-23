@@ -61,7 +61,7 @@ class _FilmeState extends State<Filme> {
             // Título da página
             Center(
               child: Text(
-                titulos[1],
+                titulos[2],
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 30,

@@ -55,13 +55,13 @@ class _CuriosidadesState extends State<Curiosidades> {
 
       appBar: AppBar(
         title: Text(
-          titulos[0] as String,
+          titulos[7],
           style: const TextStyle(
             color: Colors.white,
             fontWeight: FontWeight.bold,
           ),
         ),
-        backgroundColor: Colors.red,
+        backgroundColor: Colors.red.shade800,
       ),
 
       body: SingleChildScrollView(
