@@ -12,7 +12,8 @@ class Filme extends StatefulWidget {
 
 class _FilmeState extends State<Filme> {
   List<dynamic> imagens = [];
-  List<dynamic> conteudo = [];
+  List<dynamic> titulos = [];
+  List<dynamic> legendas = [];
 
   @override
   void initState() {
@@ -27,27 +28,26 @@ class _FilmeState extends State<Filme> {
 
     setState(() {
       imagens = data[0]['imagens'];
-      conteudo = data[0]['conteudo'];
+      titulos = data[0]['conteudo'][0]['titulos'];
+      legendas = data[0]['conteudo'][0]['textos'];
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    if (conteudo.isEmpty || imagens.isEmpty) {
+    if (titulos.isEmpty || legendas.isEmpty || imagens.isEmpty) {
       return const Scaffold(
         backgroundColor: Color(0xFF1A1A1A),
         body: Center(child: CircularProgressIndicator(color: Colors.red)),
       );
     }
 
-    final txtConteudo = conteudo[0];
-
     return Scaffold(
       backgroundColor: Color(0xFF1A1A1A),
 
       appBar: AppBar(
         title: Text(
-          "Sobre: Deu a Louca na Chapeuzinho",
+          titulos[0],
           style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
         ),
         backgroundColor: Colors.red.shade800,
@@ -61,7 +61,7 @@ class _FilmeState extends State<Filme> {
             // Título da página
             Center(
               child: Text(
-                txtConteudo['titulo'],
+                titulos[1],
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 30,
@@ -95,64 +95,13 @@ class _FilmeState extends State<Filme> {
                 border: Border.all(color: Colors.red.shade700, width: 2),
               ),
               child: Secao(
-                endereco: [imagens[0]['url']],
-                texto: txtConteudo['texto'],
+                endereco: [imagens[0]['misc'][0]['url']],
+                texto: legendas[0],
                 tamanho: 300,
               ),
             ),
 
             SizedBox(height: 35),
-
-            // Título do elenco
-            Center(
-              child: Text(
-                conteudo[1]['titulo'],
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 26,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
-
-            SizedBox(height: 10),
-
-            Center(
-              child: Container(
-                height: 4,
-                width: 60,
-                decoration: BoxDecoration(
-                  color: Colors.red,
-                  borderRadius: BorderRadius.circular(10),
-                ),
-              ),
-            ),
-
-            SizedBox(height: 20),
-
-            // Geração dinâmica de cada imagem no JSON
-            if (imagens.isNotEmpty)
-              ...imagens.skip(1).map((personagem) {
-                return Center(
-                  child: Container(
-                    width: 1000,
-                    margin: EdgeInsets.only(bottom: 15),
-                    padding: EdgeInsets.all(8),
-                    decoration: BoxDecoration(
-                      color: Color(0xFF292929),
-                      borderRadius: BorderRadius.circular(15),
-                      border: Border.all(color: Colors.grey.shade700),
-                    ),
-                    child: Secao(
-                      endereco: [personagem['url']],
-                      texto: personagem['legenda'],
-                      tamanho: 100,
-                    ),
-                  ),
-                );
-              }),
-
-            SizedBox(height: 20),
           ],
         ),
       ),

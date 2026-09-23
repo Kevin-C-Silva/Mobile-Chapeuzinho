@@ -1,6 +1,9 @@
+import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:trabalho_chapeuzinho/filme.dart';
 import 'package:trabalho_chapeuzinho/curiosidades.dart';
+import 'package:trabalho_chapeuzinho/elenco.dart';
 
 void main() {
   runApp(const MainApp());
@@ -18,17 +21,49 @@ class MainApp extends StatelessWidget {
   }
 }
 
-class PagInicial extends StatelessWidget {
+class PagInicial extends StatefulWidget {
   const PagInicial({super.key});
 
   @override
+  State<PagInicial> createState() => _PagInicialState();
+}
+
+class _PagInicialState extends State<PagInicial> {
+  List<dynamic> titulos = [];
+  List<dynamic> botoes = [];
+
+
+  @override
+  void initState() {
+    super.initState();
+    readJson();
+  }
+
+  Future<void> readJson() async {
+    final String response = await rootBundle.loadString('assets/midias.json');
+
+    final List<dynamic> data = json.decode(response);
+
+    setState(() {
+      titulos = data[0]['conteudo'][0]['titulos'];
+      botoes = data[0]['conteudo'][0]['botoes'];
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
+    if (titulos.isEmpty || botoes.isEmpty) {
+      return const Scaffold(
+        backgroundColor: Color(0xFF1A1A1A),
+        body: Center(child: CircularProgressIndicator(color: Colors.red)),
+      );
+    }
     return Scaffold(
       backgroundColor: const Color(0xFF1A1A1A),
       appBar: AppBar(
         leading: const Icon(Icons.movie, color: Colors.white),
-        title: const Text(
-          "Sobre: Deu a Louca na Chapeuzinho",
+        title: Text(
+          titulos[0],
           style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
         ),
         backgroundColor: Colors.red.shade800,
@@ -60,12 +95,37 @@ class PagInicial extends StatelessWidget {
                       MaterialPageRoute(builder: (context) => const Filme()),
                     );
                   },
-                  child: const Text(
-                    "Sobre o filme",
+                  child: Text(
+                    botoes[0],
                     style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                   ),
                 ),
-
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.indigo[500],
+                    foregroundColor: Colors.white,
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 25,
+                      vertical: 18,
+                    ),
+                    side: const BorderSide(color: Colors.white, width: 2),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    elevation: 6,
+                  ),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const Elenco()),
+                    );
+                  },
+                  child: Text(
+                    botoes[1],
+                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                  ),
+                ),
+                
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.indigo[500],
@@ -88,8 +148,8 @@ class PagInicial extends StatelessWidget {
                       ),
                     );
                   },
-                  child: const Text(
-                    "Curiosidades",
+                  child: Text(
+                    botoes[2],
                     style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                   ),
                 ),

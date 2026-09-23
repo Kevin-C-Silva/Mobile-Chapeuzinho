@@ -13,7 +13,9 @@ class Curiosidades extends StatefulWidget {
 class _CuriosidadesState extends State<Curiosidades> {
   // Listas que irão armazenar os dados do JSON
   List<dynamic> imagens = [];
-  List<dynamic> conteudo = [];
+  List<dynamic> titulos = [];
+  List<dynamic> legendas = [];
+
 
   @override
   void initState() {
@@ -31,14 +33,15 @@ class _CuriosidadesState extends State<Curiosidades> {
 
     setState(() {
       imagens = data[0]['imagens'];
-      conteudo = data[0]['conteudo'];
+      titulos = data[0]['conteudo'][0]['titulos'];
+      legendas = data[0]['conteudo'][0]['textos'];
     });
   }
 
   @override
   Widget build(BuildContext context) {
     // Exibe um indicador de progresso enquanto os dados não carregam
-    if (conteudo.isEmpty || imagens.isEmpty) {
+    if (titulos.isEmpty || imagens.isEmpty) {
       return const Scaffold(
         backgroundColor: Color(0xFF1A1A1A),
         body: Center(
@@ -47,14 +50,11 @@ class _CuriosidadesState extends State<Curiosidades> {
       );
     }
 
-    // Pega o item de índice 2 do conteúdo ("Curiosidades")
-    final txtConteudo = conteudo[2];
-
     return Scaffold(
       backgroundColor: const Color(0xFF1A1A1A),
       appBar: AppBar(
-        title: const Text(
-          "Sobre: Deu a Louca na Chapeuzinho",
+        title: Text(
+          titulos[0],
           style: TextStyle(
             color: Colors.white,
             fontWeight: FontWeight.bold,
@@ -69,7 +69,7 @@ class _CuriosidadesState extends State<Curiosidades> {
             const SizedBox(height: 15),
 
             Text(
-              txtConteudo['titulo'],
+              titulos[4],
               style: const TextStyle(
                 color: Colors.white,
                 fontSize: 30,
@@ -103,8 +103,8 @@ class _CuriosidadesState extends State<Curiosidades> {
                 ),
               ),
               child: Secao(
-                endereco: [imagens[0]['url']],
-                texto: txtConteudo['texto'],
+                endereco: [imagens[0]['misc'][0]['url']],
+                texto: legendas[1],
                 tamanho: 300,
               ),
             ),
