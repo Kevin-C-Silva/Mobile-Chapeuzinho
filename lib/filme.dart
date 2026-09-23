@@ -47,7 +47,7 @@ class _FilmeState extends State<Filme> {
 
       appBar: AppBar(
         title: Text(
-          titulos[0],
+          titulos[1],
           style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
         ),
         backgroundColor: Colors.red.shade800,
@@ -95,7 +95,7 @@ class _FilmeState extends State<Filme> {
                 border: Border.all(color: Colors.red.shade700, width: 2),
               ),
               child: Secao(
-                endereco: [imagens[0]['misc'][0]['url']],
+                endereco: [imagens[0]['misc'][0]['caminho']],
                 texto: legendas[0],
                 tamanho: 300,
               ),

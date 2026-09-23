@@ -53,15 +53,15 @@ class _PagInicialState extends State<PagInicial> {
   @override
   Widget build(BuildContext context) {
     if (titulos.isEmpty || botoes.isEmpty) {
-      return const Scaffold(
+      return Scaffold(
         backgroundColor: Color(0xFF1A1A1A),
         body: Center(child: CircularProgressIndicator(color: Colors.red)),
       );
     }
     return Scaffold(
-      backgroundColor: const Color(0xFF1A1A1A),
+      backgroundColor: Color(0xFF1A1A1A),
       appBar: AppBar(
-        leading: const Icon(Icons.movie, color: Colors.white),
+        leading: Icon(Icons.movie, color: Colors.white),
         title: Text(
           titulos[0],
           style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
@@ -71,7 +71,7 @@ class _PagInicialState extends State<PagInicial> {
       body: Center(
         child: Column(
           children: [
-            const SizedBox(height: 40),
+            SizedBox(height: 40),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
@@ -79,11 +79,11 @@ class _PagInicialState extends State<PagInicial> {
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.indigo[500],
                     foregroundColor: Colors.white,
-                    padding: const EdgeInsets.symmetric(
+                    padding: EdgeInsets.symmetric(
                       horizontal: 25,
                       vertical: 18,
                     ),
-                    side: const BorderSide(color: Colors.white, width: 2),
+                    side: BorderSide(color: Colors.white, width: 2),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(12),
                     ),
@@ -104,11 +104,11 @@ class _PagInicialState extends State<PagInicial> {
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.indigo[500],
                     foregroundColor: Colors.white,
-                    padding: const EdgeInsets.symmetric(
+                    padding: EdgeInsets.symmetric(
                       horizontal: 25,
                       vertical: 18,
                     ),
-                    side: const BorderSide(color: Colors.white, width: 2),
+                    side: BorderSide(color: Colors.white, width: 2),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(12),
                     ),
@@ -117,7 +117,7 @@ class _PagInicialState extends State<PagInicial> {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => const Elenco()),
+                      MaterialPageRoute(builder: (context) => Elenco()),
                     );
                   },
                   child: Text(
@@ -134,7 +134,7 @@ class _PagInicialState extends State<PagInicial> {
                       horizontal: 25,
                       vertical: 18,
                     ),
-                    side: const BorderSide(color: Colors.white, width: 2),
+                    side: BorderSide(color: Colors.white, width: 2),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(12),
                     ),
@@ -144,7 +144,7 @@ class _PagInicialState extends State<PagInicial> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const Curiosidades(),
+                        builder: (context) => Curiosidades(),
                       ),
                     );
                   },

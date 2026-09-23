@@ -36,7 +36,7 @@ class _ElencoState extends State<Elenco> {
   @override
   Widget build(BuildContext context) {
     if (titulos.isEmpty || elenco.isEmpty || produtores.isEmpty) {
-      return const Scaffold(
+      return Scaffold(
         backgroundColor: Color(0xFF1A1A1A),
         body: Center(child: CircularProgressIndicator(color: Colors.red)),
       );
@@ -47,7 +47,7 @@ class _ElencoState extends State<Elenco> {
 
       appBar: AppBar(
         title: Text(
-          titulos[0],
+          titulos[4],
           style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
         ),
         backgroundColor: Colors.red.shade800,
@@ -58,10 +58,9 @@ class _ElencoState extends State<Elenco> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Título da página
             Center(
               child: Text(
-                titulos[3],
+                titulos[5],
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 30,
@@ -98,9 +97,10 @@ class _ElencoState extends State<Elenco> {
                       border: Border.all(color: Colors.grey.shade700),
                     ),
                     child: Secao(
-                      endereco: [producao['url']],
-                      texto: producao['legenda'],
+                      endereco: [producao['caminho'] as String],
+                      texto: producao['legenda'] as String,
                       tamanho: 100,
+                      link: producao['link'] as String?
                     ),
                   ),
                 );
@@ -108,10 +108,9 @@ class _ElencoState extends State<Elenco> {
 
             SizedBox(height: 35),
 
-            // Título do elenco
             Center(
               child: Text(
-                titulos[2],
+                titulos[6],
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 26,
@@ -148,8 +147,8 @@ class _ElencoState extends State<Elenco> {
                       border: Border.all(color: Colors.grey.shade700),
                     ),
                     child: Secao(
-                      endereco: [personagem['url']],
-                      texto: personagem['legenda'],
+                      endereco: [personagem['caminho'] as String],
+                      texto: personagem['legenda'] as String,
                       tamanho: 100,
                     ),
                   ),
