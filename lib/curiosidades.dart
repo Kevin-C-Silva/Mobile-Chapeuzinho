@@ -89,12 +89,12 @@ class _CuriosidadesState extends State<Curiosidades> {
               return Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  // TÍTULO FORA DO CONTAINER
+                  // Título
                   Text(
                     tituloCuriosidade,
                     style: const TextStyle(
                       color: Colors.white,
-                      fontSize: 30,
+                      fontSize: 25,
                       fontWeight: FontWeight.bold,
                     ),
                     textAlign: TextAlign.center,
